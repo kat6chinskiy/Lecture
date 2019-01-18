@@ -1,0 +1,78 @@
+\sloppy
+\documentclass[14pt,a4paper,oneside]{extarticle}	% Размер основного шрифта и формата листа
+\usepackage{xltxtra}						% Используется для вывода логотипа XeLaTeX
+\usepackage{xunicode}						% Кодировка документа
+\usepackage{polyglossia}					% Загружает пакет многоязыковой верстки
+%\newfontfamily\russianfont{Book Antiqua}
+\setmainfont{CMU Serif}						% Основной шрифт текста
+\setdefaultlanguage{russian}				% Основной язык текста
+\setotherlanguage{english}					% Дополнительный язык текста
+\linespread{1.25}							% Межстрочный интервал выбран полуторным
+\usepackage[left=2.5cm,
+right=1.5cm,vmargin=2.5cm]{geometry} % Отступы по краям листа
+\bibliographystyle{ugost2008}
+
+%---------------------------%
+%---- Пакеты расширений ----%
+%---------------------------%
+
+\usepackage{verbatim,indentfirst}
+\usepackage{cite,enumerate,float}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+
+%---------------------------%
+%--- Вставка иллюстраций ---%
+%---------------------------%
+\usepackage{graphicx}
+\usepackage{subfigure}
+\graphicspath{{Images/}}
+\usepackage{fontspec}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkcolor}{HTML}{800080} % цвет ссылок
+\definecolor{urlcolor}{HTML}{0000CD} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+\newcommand{\ee}{e^{i\vec{k}\vec{x}}}
+\newcommand{\exx}{exp\left\lbrace -t\frac{i}{\hbar}E_{\vec{k}n}\right\rbrace }
+
+\begin{document}
+	% << и « одно и то же
+\newpage 	% Создание новой страницы
+
+\setcounter{page}{2}% Нумерация начинается со второй страницы
+\renewcommand{\contentsname}{\center{Содержание}} 	% Использование Содержания вместо Оглавления
+\tableofcontents
+
+\newpage
+
+	\begin{center}
+		\section*{Введение} % Звездочка убирает нумерацию главы
+		\addcontentsline{toc}{section}{Введение} % Добавляет Введение в Содержание
+	\end{center}
+
+\begin{center}
+	\textbf{Кооперативные эффекты в твёрдых телах}
+
+	\textit{Кадыров Дальво Ибрагимович} под редакцией Кучинского М.О
+
+	Условимся проводить пары в Пятницу по нечётным неделям в 11.30 в аудитории 106. И в среду по нечётным дням с 17.00 и до победных 20.35
+
+\end{center}
+
+\newpage
+
+\begin{center}
+	\section*{Первая пара 07.09.18} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{section}{Первая пара 07.09.18} % Добавляет Введение в Содержание
+\end{center}
+
+
+\textbf{Теорема Блоха}
+
+\subsection*{Периоды решетки}
+
+
+
+\end{document}

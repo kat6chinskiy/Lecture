@@ -1,0 +1,889 @@
+\sloppy
+\documentclass[14pt,a4paper,oneside]{extarticle}	% Размер основного шрифта и формата листа
+\usepackage{xltxtra}						% Используется для вывода логотипа XeLaTeX
+\usepackage{xunicode}						% Кодировка документа
+\usepackage{polyglossia}					% Загружает пакет многоязыковой верстки
+%\newfontfamily\russianfont{Book Antiqua}
+\setmainfont{CMU Serif}						% Основной шрифт текста
+\setdefaultlanguage{russian}				% Основной язык текста
+\setotherlanguage{english}					% Дополнительный язык текста
+\linespread{1.25}							% Межстрочный интервал выбран полуторным
+\usepackage[left=2.5cm,
+right=1.5cm,vmargin=2.5cm]{geometry} % Отступы по краям листа
+\bibliographystyle{ugost2008}
+
+%---------------------------%
+%---- Пакеты расширений ----%
+%---------------------------%
+
+\usepackage{verbatim,indentfirst}
+\usepackage{cite,enumerate,float}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+
+%---------------------------%
+%--- Вставка иллюстраций ---%
+%---------------------------%
+\usepackage{graphicx}
+\usepackage{subfigure}
+\graphicspath{{Images/}}
+\usepackage{fontspec}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkcolor}{HTML}{800080} % цвет ссылок
+\definecolor{urlcolor}{HTML}{0000CD} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+\newcommand{\e}{e^{-i\omega\: t}}
+\newcommand{\exx}{exp\left\lbrace -t\frac{i}{\hbar}E_{\vec{k}n}\right\rbrace }
+
+
+\newcommand{\bracket}[1] {\left( #1 \right) } % скобки с двух сторон большие 
+\newcommand{\dd}[1] {\partial #1 }
+\newcommand{\dif}[2] {\bracket{ \frac{\partial #1}{\partial #2} }}
+
+\begin{document}
+	% << и « одно и то же
+\newpage 	% Создание новой страницы
+
+\setcounter{page}{2}% Нумерация начинается со второй страницы
+\renewcommand{\contentsname}{\center{Содержание}} 	% Использование Содержания вместо Оглавления
+\tableofcontents
+
+\newpage
+
+	\begin{center}
+		\section*{Введение} % Звездочка убирает нумерацию главы
+		\addcontentsline{toc}{section}{Введение} % Добавляет Введение в Содержание
+	\end{center}
+
+\begin{center}
+
+	\textbf{Ударные волны и аккустические явления}
+
+	\textit{Дёмин Виталий Анатольевич} под редакцией Кучинского М.О
+
+\end{center}
+
+\newpage
+
+\begin{center}
+	\section*{Первая пара 09.01.19} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{section}{Первая пара 09.01.19} % Добавляет Введение в Содержание
+	\subsection*{Звуковые волны} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{subsection}{Звуковые волны} % Добавляет Введение в Содержание
+\end{center}
+
+
+
+\textbf{Уравнение плоской звуковой волны}
+
+Звуковой волной называется процесс распространения малых возмущений в веществе.
+Распространение всегда связано с сжимаемостью. В результате звуковая волна представляет собой систему чередующихся сжатий и разряжений.
+Эта картина перемещается в пространстве без переноса вещества в первом приближении.
+То есть перенос вещества эффект вторичный.
+
+Колебания считаются малыми а диссипацию также не рассматривают.
+
+Оказывается что звук не затухает быстро, а тот факт что мы не слышим говорящего связан чисто с его рассеиванием.
+То есть как было сказано выше причина не в вязкой диссипацие, а в рассеивание.
+
+ Если бы не рассеивание то нашу речь можно было бы услышать на десятках километрах.
+
+ Но для начала объяснения возьмём уравнение Эйлера, но оно избыточно как это не странно.
+ Избыточно в плане нелинейного слагаемого $ (\vec{v}\:\nabla)\vec{v} $ - можно пренебречь если колебания малые (член квадратичен по скорости).
+ То есть пренебрегаем нелинейным слагаемым.
+
+ Помимо этого будем рассматривать однородную среду с $ \rho_{0} $ и $ p_{0} $
+ Где эти два слагаемых являются равновестными значениями.
+ А когда мы вносим возмущения появляются слагаемые со штрихом в итоге имеем
+
+\begin{eqnarray}
+\rho = \rho_{0} + \rho' \\
+p = p_{0} + p'
+\end{eqnarray}
+
+
+То есть слагаемые со штрихом говорят о малом отклонении от равновесного значения, также поправки являются не стационарными.
+$ \rho_{0} >> \rho' $ и 
+$ p_{0} >> p' $
+В результате уравнение Эйлера имеет вид:
+\begin{equation}\label{3}
+\frac{\partial \vec{v}}{\partial t} + (\vec{v}\:\nabla)\vec{v} = -\frac{1}{\rho}\: \nabla p
+\end{equation}
+
+Так как среда однородна то давление $ p_{0} = 0 $, а если разложить в ряд слагаемое $ \frac{1}{\rho} $ то в первом приближении получаем $ \frac{1}{\rho_{0}} $.
+В результате чего имеем:
+\begin{equation}\label{4}
+\frac{\partial \vec{v}}{\partial t} + \frac{1}{\rho_{0}}\: \nabla p' = 0
+\end{equation}
+где $ \vec{v} $ - и есть скорость возмущения.
+Помимо этого запишем уравнение неразрывности 
+\begin{equation}\label{5}
+\frac{\partial \rho}{\partial t} + div( \rho \vec{v}) = 0
+\end{equation}
+Вновь расписывая $ \rho $ и $ p $ получается следующее:
+слагаемое $ \frac{\partial \rho_{0}}{\partial t} = 0 $, а $ div( \rho'\vec{v}') $ нелинейна и мала по сравнению с $ div( \rho_{0}\vec{v}) $. То есть в итоге получили следующее выражение:
+\begin{equation}\label{6}
+\frac{\partial \rho'}{\partial t} + \rho_{0}\: div(\vec{v}) = 0
+\end{equation}
+
+Говоря простым языком мы разложили все в ряд и выделили главные компоненты (основные (играющие главенствующую роль)). Или по простому лиениризовали систему уравнений.
+
+У нас получилось, что каждое слагаемое линейно по величине. И линейную систему всегда можно решить. И решение будет единственным, а решить можно аналитически.
+
+Но у нас 2 уравнения, а неизвестных 3: $ \rho' , \: p', \: \vec{v} $. Нам необходимо замкнуть систему уравнений, чтобы удалось её решить. 
+В роли замыкающего уравнения выступит уравнение состояния.
+Такие уравнения существуют для газов, а для жидкостей не особо. 
+
+Для лучшего понимания , уравнения состояния это зависимость $ P,\:V,\:T $, ну например уравнение Менделеева-Клапейрона ну или тип Ван-дер-Вальса.
+
+Будем считать что звук это волна представляющая собой адиабатический процесс.
+Это говорит о том, что мы можем разложить давление по двум ТД переменным. Пусть одной из них будет энтропия.
+Тогда выражения для давления примет следующий вид:
+
+\begin{equation}\label{7}
+p' = \left( \frac{\partial p}{\partial \rho} \right)_{S}  \rho\:' + \left( \frac{\partial p}{\partial S} \right)_{\rho}  S\:'
+\end{equation}
+Второе слагаемое уравнения (\ref{7}) по определению равно нулю так как такие процессы изотопические, поэтому в итоге имеем:
+
+\begin{equation}\label{8}
+p' = \left( \frac{\partial p}{\partial \rho} \right)_{S}  \rho\:'
+\end{equation}
+
+Внутренняя энергия переходит в механическую и наоборот.
+С помощью этого мы замыкаем нашу систему.
+
+И наша система выглядит следующим образом:
+ \begin{equation}\label{9}
+  \begin{cases}
+  \frac{\partial \vec{v}}{\partial t} + \frac{1}{\rho_{0}}\: \nabla p' = 0 \\
+  \frac{\partial \rho\:'}{\partial t} + \rho_{0}\: div(\vec{v}) = 0
+ \end{cases}
+ \end{equation}
+
+Подставим выражение (\ref{8}) в уравнение (\ref{9}) и получаем:
+ \begin{equation}\label{10}
+\begin{cases}
+\frac{\partial \vec{v}}{\partial t} + \frac{1}{\rho_{0}}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} \nabla \rho\:' = 0 \\
+\frac{\partial \rho\:'}{\partial t} + \rho_{0}\: div(\vec{v}) = 0
+\end{cases}
+\end{equation}
+Убедимся что эта система звуковой волны.
+
+$ \looparrowright $
+Рассмотрим звуковую волну $ v_{x}(x,t) $, пусть вектор скорости имеет лишь компоненту $ x $.
+Это одно из основопологающее отличие от электромагнитной волны, потому что она поперечная.
+
+Мы ищем решение в виде продольной волны.
+\begin{eqnarray}
+v_{x} (x,t) \\
+\rho\:'(x,t)
+\end{eqnarray}
+
+Имеем волну движущуюся вдоль оси $ x $.
+
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics{1.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Волна по $ x $}
+	\label{fig::1}
+\end{figure}
+
+Ищем однородное решение по $ x $ и $ z $
+[ под однородностью понимается отсутствие зависимости от $ x $ и $ z $, её одинаковость ].
+
+\begin{equation}\label{11}
+\frac{\partial \vec{v}_{x}}{\partial t} + \frac{1}{\rho_{0}}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} \frac{\partial\rho\:'}{\partial x} = 0.
+\end{equation}
+про diff по времени и получим:
+\begin{equation}\label{12}
+\frac{\partial^{2} \vec{v}_{x}}{\partial t^{2}} + \frac{1}{\rho_{0}}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} \frac{\partial}{\partial x}\frac{\partial\rho\:'}{\partial t} = 0.
+\end{equation}
+
+А теперь из второго выражения (\ref{10}) выразим $ \frac{\partial \rho \: '}{\partial t} $
+
+\begin{equation}\label{13}
+\frac{\partial \rho\:'}{\partial t} = - \rho_{0}\: div(\vec{v}) = - \rho_{0}\: \frac{\partial v_{x}}{\partial x}
+\end{equation}
+
+Подставим (\ref{13}) в (\ref{12}) и получим:
+
+
+\begin{equation}\label{14}
+\frac{\partial^{2} \vec{v}_{x}}{\partial t^{2}} - \frac{1}{\rho_{0}}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} \frac{\partial}{\partial x}\:\rho_{0}\: \frac{\partial v_{x}}{\partial x} = 0.
+\end{equation}
+
+В результате имеем:
+\begin{equation}\label{15}
+\frac{\partial^{2} v_{x}}{\partial t^{2}} - \left( \frac{\partial p}{\partial \rho} \right)_{S}
+\frac{\partial^{2} v_{x}}{\partial x^{2}} = 0
+\end{equation}
+
+Обозначим $ \left( \frac{\partial p}{\partial \rho} \right)_{S} = c^{2} $, вот и получилось уравнение плоской волны.
+
+\begin{equation}\label{16}
+\frac{\partial^{2} v_{x}}{\partial t^{2}} - c^{2}
+\frac{\partial^{2} v_{x}}{\partial x^{2}} = 0
+\end{equation}
+
+Это гиперболическое уравнение мат.физики 
+(существуют три вида:)
+\begin{itemize}
+	\item Параболического типа
+	\item Эллиптического типа 
+	\item  Гиперболического типа 
+\end{itemize}
+
+В итоге у нас есть равнение гиперболического типа с 1й неизвестной, но порядок повысился (квадраты и всё такое), уравнение второго порядка по времени и координате.
+
+Получили волновое уравнение гиперболического типа, где
+$ c $ - скорость волны, попрошу внимания "звуковой волны". Теперь решим это уравнение.
+Решение в отличие от детского сада получим на более высоком уровне.
+
+Так как движения описываемые уравнение Эйлера являются потенциальными.
+Введём как в электродинамике потенциал. Введём потенциал скорости $ \vec{v} = \nabla \varphi $, где $ \varphi $ - потенциал скорости. Через потенциал скорости можно найти все интересующие нас величины.
+
+Из уравнения Эйлера 
+\begin{equation}\label{17}
+\nabla\frac{\partial \varphi}{\partial t} = - \frac{1}{\rho_{0}}\nabla p\:' \Rightarrow p\:' \: = \: - \rho_{0} \frac{\partial \varphi}{\partial t}
+\end{equation}
+
+То есть если известно $ \varphi $ - то можно без проблем найти изменение давления колебаний.
+
+Из уравнения состояния (\ref{8}) имеем $ p' = c^{2}  \rho\:' $  и можем выразить плотность $ \rho\:' $:
+\begin{equation}\label{18}
+\rho\:' = \frac{p\:'}{c^{2}} = - \frac{\rho_{0}}{c^{2}}\frac{\partial \varphi}{\partial t}.
+\end{equation}
+
+Вернёмся к уравнению непрерывности (неразрывности) (\ref{10}) используя $ p\:' $.
+\begin{equation}\label{19}
+\frac{\partial \rho\:'}{\partial t} + \rho_{0}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} div(\vec{v}) = 0 \Rightarrow - \rho_{0}\:\frac{\partial^{2} \varphi}{\partial t^{2}} + \rho_{0}\left( \frac{\partial p}{\partial \rho} \right)_{S} div(grad(\varphi)) = 0
+\end{equation}
+
+То есть снова пришли к волновому уравнению:
+\begin{equation}\label{20}
+\frac{\partial^{2} \varphi}{\partial t^{2}} - c^{2} \triangle \varphi = 0
+\end{equation}
+
+Вывод потенциал скорости тоже подчиняется волновому уравнению.
+Найдём для начала решение одномерного уравнения (\ref{20}), для того чтобы его решить перейдём к переменным $ \xi = x - ct $ и $ \eta = x + ct $. Переработаем уравнение в терминах новых переменных 
+
+\begin{equation}\label{21}
+\frac{\partial \varphi}{\partial x} = \frac{\partial \varphi}{\partial \eta}\frac{\partial \eta}{\partial x} + \frac{\partial \varphi}{\partial \xi}\frac{\partial \xi}{\partial x} =  \frac{\partial \varphi}{\partial \eta}\cdot 1 + \frac{\partial \varphi}{\partial \xi}\cdot 1 = \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi}
+\end{equation}
+ Используем это для получения второй производной:
+ \begin{eqnarray}\label{22}
+ \frac{\partial^{2} \varphi}{\partial x^{2}} = \frac{\partial}{\partial x} \left( \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi} \right) = \frac{\partial }{\partial \eta}\frac{\partial \varphi}{\partial x} + \frac{\partial}{\partial \xi}\frac{\partial \varphi}{\partial x} \\
+  = \frac{\partial }{\partial \eta} \left( \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi} \right) + \frac{\partial }{\partial \xi} \left( \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi} \right) = \\
+   \frac{\partial^{2} \varphi}{\partial \eta^{2}} + \frac{\partial^{2} \varphi}{\partial \eta \partial \xi} + \frac{\partial^{2} \varphi}{\partial \xi \partial \eta} + \frac{\partial^{2} \varphi}{\partial \xi^{2}} = 
+      \frac{\partial^{2} \varphi}{\partial \eta^{2}} + \frac{2\:\partial^{2} \varphi}{\partial \eta \partial \xi} +  \frac{\partial^{2} \varphi}{\partial \xi^{2}}
+ \end{eqnarray}
+Подобным образом распишем производную по времени:
+\begin{eqnarray}\label{23}
+\frac{\partial \varphi}{\partial t} = \frac{\partial \varphi}{\partial \eta}\frac{\partial \eta}{\partial t} + \frac{\partial \varphi}{\partial \xi}\frac{\partial \xi}{\partial t} = \frac{\partial \varphi}{\partial \eta}\cdot c - \frac{\partial \varphi}{\partial \xi}\cdot c
+\end{eqnarray}
+
+ \begin{eqnarray}\label{24}
+\frac{\partial^{2} \varphi}{\partial t^{2}} = \frac{\partial}{\partial t}\left[ c \cdot \left( \frac{\partial \varphi}{\partial \eta} - \frac{\partial \varphi}{\partial \xi} \right)\right]  = c \cdot \frac{\partial }{\partial \eta}\frac{\partial \varphi}{\partial t} - c\cdot \frac{\partial}{\partial \xi}\frac{\partial \varphi}{\partial t} \\
+= c\cdot \frac{\partial }{\partial \eta} \left( \frac{\partial \varphi}{\partial \eta}\cdot c -  \frac{\partial \varphi}{\partial \xi}\cdot c \right) - c\cdot \frac{\partial }{\partial \xi} \left( \frac{\partial \varphi}{\partial \eta}\cdot c - \frac{\partial \varphi}{\partial \xi} \cdot c \right) = \\
+c^{2}\cdot\frac{\partial^{2} \varphi}{\partial \eta^{2}} - c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \eta \partial \xi} - c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \xi \partial \eta} + c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \xi^{2}} = 
+c^{2}\cdot \left[ \frac{\partial^{2} \varphi}{\partial \eta^{2}} - \frac{2\:\partial^{2} \varphi}{\partial \eta \partial \xi} +  \frac{\partial^{2} \varphi}{\partial \xi^{2}}\right] 
+\end{eqnarray}
+
+Теперь подставим в уравнение (\ref{20}), которое записывается в нашем случае следующим образом $ \frac{\partial^{2} \varphi}{\partial t^{2}} - c^{2} \frac{\partial^{2} \varphi}{\partial x^{2}} = 0 $
+
+В итоге имеем следующее равенство:
+
+\begin{equation}\label{25}
+4c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \eta \partial \xi} = 0 \Rightarrow \frac{\partial^{2} \varphi}{\partial \eta \partial \xi} = 0
+\end{equation}
+Уравнение (\ref{25}) легко решить.
+Найдём общее решение этого уравнения.
+
+После первого интегрирования по $ \eta $ получим:
+\begin{equation}\label{26}
+\frac{\partial \varphi}{\partial \xi} = f(\xi)
+\end{equation}
+Второе интегрирование даёт:
+\begin{equation}\label{27}
+\varphi = \underbrace{\int f_{1}(\xi)d\xi}_{\text{переходит в}\tilde{f_{1}}(\xi)} + f_{2}(\eta)
+\end{equation}
+
+Упустим тильду и получим следующее :
+\begin{equation}\label{28}
+\varphi = f_{1}(\xi) + f_{2}(\eta).
+\end{equation}
+Это одно из фундаментальных свойств гиперболического уравнения.
+Вернёмся к исходным переменным:
+\begin{equation}\label{29}
+\varphi = f_{1}(x-ct) + f_{2}(x+ct).
+\end{equation}
+И это говорит нам о том, что волна может иметь любую форму главное чтобы это решение зависело от волнового аргумента.
+Волновой аргумент говорит о том что при смещении координаты $ x $ на $ ct $ значение волнового аргумента в следующий момент времени $ t $ не меняется это справедливо для каждой точки $ x $.
+Эти два частных решения независимы и именно отсюда и видно, что $ c $ - скорость рассматриваемой волны.
+
+Итак исходное волновое уравнение описывает без дисперсионную волну. Так как вся картина движется (перемещается) в среде со скоростью $ c $ без дисперсии.
+ 
+"Дисперсия волн — в теории волн различие фазовых скоростей линейных волн в зависимости от их частоты. Дисперсия волн приводит к тому, что волновое возмущение произвольной негармонической формы претерпевает изменения (диспергирует) по мере его распространения."
+
+Отметим тот факт, что звуковая волна в жидкостях и газах является продольной 
+\begin{equation}\label{30}
+\varphi(x,t) \: \Rightarrow \: v_{x}=\nabla_{x}\: \varphi = \frac{\partial \varphi}{\partial x}.
+\end{equation}
+
+Далее ограничимся одним частным решением, которое описывает волну в положительном направлении $ x $.
+
+\begin{equation}\label{31}
+ v_{x}=\nabla_{x}\: \varphi = \frac{\partial \varphi}{\partial x}= f\:'(x-ct) = \frac{\partial f}{\partial \xi} \cdot 1.
+\end{equation}
+
+Найдём давление $p\:'$:
+\begin{equation}\label{32}
+p\:' = - \rho_{0} \frac{\partial \varphi}{\partial t} =  - \rho_{0} \:f\:'(x-ct)\cdot(-c) = \rho_{0}\:c \:f\:'(x-ct)
+\end{equation}
+Исключим $ f' $ из уравнения (\ref{31})
+\begin{equation}\label{33}
+p\:' = \rho_{0}\:c \: v_{x} \Rightarrow  v_{x} = \frac{p\:'}{\rho_{0}\:c}
+\end{equation}
+Если воспользоваться уравнением состояния записанного ранее (\ref{18}) $ p' = c^{2}  \rho\:' $ выражение для скорости приобретёт следующий вид:
+\begin{equation}\label{34}
+v_{x}= \frac{c \rho\:'}{\rho_{0}}.
+\end{equation}
+По всему выходит, что все величины завязаны друг на друге.
+
+Мини итог:
+\begin{enumerate}
+	\item Получили решение для двух волн $ f_{1} + f_{2} $.
+	\item Получили связь.
+\end{enumerate}
+
+\newpage
+
+\begin{center}
+	\section*{Вторая пара 10.01.19} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{section}{Вторая пара 10.01.19} % Добавляет Введение в Содержание
+\end{center}
+
+При описании звуковой волны мы предполагали, что среда адиабатическая.
+То есть для системы выполняется Закон Сохранения Энергии.
+В уравнении Эйлера также нет вязкости, это не противоречит тому что в ходе распространения волны температура может изменятся.
+
+Это подтверждает идею перехода энергии кинетической в потенциальную и обратно.
+
+Обратимся к всемогущей термодинамике:
+\begin{equation}\label{35}
+p (\rho , S) = \left( \frac{\partial p}{\partial \rho}\right)_{S}  \rho\:' + \underbrace{\left( \frac{\partial p}{\partial S}\right)_{\rho}  S\:'}_{\text{даёт }\: 0 \: \text{т.к проц адиабатический }}
+\end{equation}
+по аналогии :
+
+\begin{equation}\label{36}
+T\:' = T\:' (\rho , S) = \left( \frac{\partial T}{\partial \rho}\right)_{S}  \rho\:' + \underbrace{\left( \frac{\partial T}{\partial S}\right)_{\rho}  S\:'}_{\text{даёт }\: 0 }.
+\end{equation}
+ то есть имеем такого рода формулу:
+ \begin{equation}\label{37}
+ T\:'= \left( \frac{\partial T}{\partial \rho}\right)_{S}  \rho\:'.
+ \end{equation}
+ Но это как бывает только для слабых отклонений.
+ 
+Вспомним за коэффициент температурного расширения $ \frac{1}{V}\bracket{\frac{\partial V}{\partial T}}_{p} = \beta  $ 
+Также поговорим за энтальпию:
+"энтальпия определяется как сумма внутренней энергии $ \varepsilon $ и произведения давления $ P $ на объём $ V $"
+ \begin{equation}\label{38}
+H = \varepsilon + pV
+\end{equation}
+Из уравнения внутренней энергии известно, что :
+\begin{equation}\label{39}
+d\varepsilon = TdS - pdV
+\end{equation}
+То есть получаем:
+\begin{equation}\label{40}
+dH = d(\varepsilon) + d(pV) = TdS - pdV + pdV +Vdp = TdS + Vdp
+\end{equation}
+Отсюда вытекают следующие соотношения:
+\begin{equation}\label{41}
+ \bracket{\frac{\partial T}{\partial p}}_{S} = \bracket{\frac{\partial V}{\partial S}}_{p} = \bracket{\frac{\partial V}{\partial T}}_{p}\bracket{\frac{\partial T}{\partial S}}_{p} = \frac{T}{C_{p}}\bracket{\frac{\partial V}{\partial T}}_{p}
+\end{equation}
+\begin{equation}\label{42}
+T\:' = \frac{T}{C_{p}}\beta V_{0}p\:' = \text{подставляем}\:\: p\:'=  \frac{T}{C_{p}}\beta V_{0}\frac{C}{V_{0}}v = \frac{T}{C_{p}}\beta v C 
+\end{equation}
+Выражение \ref{42} очень важно. 
+Эти соотношение демонстрируют, что все величины в звуковой волне меняются синхронно.
+
+Вот ещё 2 ТД тождества 
+\begin{equation}\label{43}
+\bracket{\frac{\partial p}{\partial \rho}}_{S} = \frac{C_{p}}{C_{v}}\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T}
+\end{equation}
+
+\begin{equation}\label{43.1}
+\bracket{\frac{\partial p}{\partial \rho}}_{S} = \frac{C_{p}}{C_{v}}\bracket{\frac{\dd{p}}{\dd{V}}}_{T}
+\end{equation}
+
+Докажем это чуть позже !!ПОЗЖЕ!!
+
+
+Известно соотношение, что $ C_{p}\: > \: C_{v} $
+Вспомним, что теплоемкость это энергия которая необходима для того чтобы нагреть тело на $ 1 $ градус. 
+\begin{equation}\label{44}
+\underbrace{\bracket{\frac{\partial p}{\partial \rho}}_{S}}_{\text{Сжимаемость}} = \frac{C_{p}}{C_{v}}\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T} = \text{Обозначим} = \gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T},
+\end{equation}
+где $ \gamma $ - отношение теплоемкостей.
+
+Вот и оказывается что скорость $ c $:
+\begin{equation}\label{45}
+c^{2} = \underbrace{\bracket{\frac{\dd{p}}{\dd{\rho}}}_{S}}_{\text{Это нельзя выяснить теоретически}} = \gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T},
+\end{equation}
+Воспользуемся уравнением состояния газа:
+\begin{equation}\label{46}
+\frac{pV}{T} = R\frac{m}{\mu},
+\end{equation}
+для элемента газа единица массы будем иметь:
+\begin{equation}\label{47}
+p = \rho\: T\frac{R}{\mu},
+\end{equation} 
+где $ R $ -газовая постоянная 
+отсюда и возьмём производную.
+\begin{equation}\label{48}
+\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T} = \frac{TR}{\mu},
+\end{equation} 
+можно к примеру выразить скорость звука.
+\begin{equation}\label{49}
+c^{2} = \gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T},
+\end{equation}
+\begin{equation}\label{50}
+c = \sqrt{\gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T}} = \sqrt{\gamma\bracket{\frac{TR}{\mu}}},
+\end{equation}
+ 
+Прикинем скорость звука при $ T = 300K, R = 8.31, \gamma = 1.4, \mu = 0.029$.
+При таких значениях $ C = 347 \frac{\text{кг}}{\text{моль}}$
+
+Но обычно делают наоборот используют скорость звука для определения показателя адиабаты - $ \gamma $  
+
+Сжимаемость воздуха сильно зависит от сжатия.
+\begin{equation*}
+C = \sqrt{\gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T}} = \sqrt{\gamma\bracket{\frac{TR}{\mu}}},
+\end{equation*}
+это видно из формулы (\ref{50}) выше  (Формула Лапласа для скорости звука).
+$ \gamma $ и $ \mu $ - материальные параметры
+$ T $ - регулируемый параметр $ C \sim \sqrt{T} $.
+
+\begin{equation}\label{51}
+\frac{\dd{^{2}\:\varphi}}{\dd{t^{2}}} = C^{2}\Delta\:\varphi
+\end{equation}
+
+\underline{Монохроматические волны} - гармонические функции по времене. Будем искать решение этого уравнения в экспоненциальной форме.
+$ \varphi(x,y,z,t) $.
+
+\begin{equation}\label{52}
+\varphi = Re\left\lbrace \varphi_{0}\e\right\rbrace 
+\end{equation}
+P.S. - мы используем только реальную часть, потому что скорость не может быть мнимой.
+
+Если ищем в таком виде то мы отделяем временную переменную .
+$ \varphi_{0} $ - это не просто амплитуда, а амплитуда (x,y,z)
+Мы отделяем временную переменную 
+\begin{equation}\label{53}
+\varphi = Re\left\lbrace \varphi_{0}\e\right\rbrace \Rightarrow \frac{\dd{^{2}\:\varphi}}{\dd{t^{2}}} = C^{2}\Delta\:\varphi
+\end{equation}
+\begin{equation*}
+-\varphi_{0}\: \omega^{2}\e = C^{2}\:\Delta\: \varphi_{0}\e
+\end{equation*}
+преобразуем
+\begin{equation*}
+-\varphi_{0}\: \omega^{2} = C^{2}\:\Delta\: \varphi_{0}
+\end{equation*}
+\begin{equation*}
+\Delta\: \varphi_{0} + \varphi_{0}\: \frac{\omega^{2}}{C^{2}} = 0 
+\end{equation*}
+Пусть будем рассматривать вновь только ось $ x $, получаем:
+\begin{equation*}
+\frac{\dd{^{2}\varphi_{0}}}{\dd{x^{2}}} + \varphi_{0}\: \frac{\omega^{2}}{C^{2}} = 0 
+\end{equation*}
+Ого себе получили уравнение гармонических колебаний.
+\begin{equation*}
+\varphi_{0}\: \sim e^{i\:\sqrt{\frac{\omega^{2}}{C^{2}}}x}\sim e^{i\:\frac{\omega}{C}x} 
+\end{equation*}
+
+Это мы подставляем и оставляем только одну часть распространения волны.
+\begin{equation}\label{54}
+\varphi =  Re\left\lbrace Ae^{i\bracket{\frac{\omega}{C}x - \omega t}} \right\rbrace = Re\left\lbrace Ae^{i\bracket{kx - \omega t}} \right\rbrace 
+\end{equation}
+Если ищем решения в виде монохроматической волны $ \omega $
+$ A $ - отвечает за сдвиг фазы
+$ k $ - волновое число, оно показывает пространственную периодичность волны и связан с длиной волны.
+\begin{equation*}
+k = \frac{2\pi}{\lambda}
+\end{equation*}
+\begin{equation*}
+\frac{\omega}{c} = \frac{2\pi}{\lambda}
+\end{equation*}
+\begin{equation*}
+\lambda = \frac{2\pi\: c}{\omega}
+\end{equation*}
+$ A $ так как комплексное число то запишем его как $ A = a\:e^{i\alpha} $
+где $ a $ -амплитуда и тогда можно подставить в (\ref{54}) и досчитать.
+\begin{equation}\label{55}
+\varphi =  a\: \cos(kx-\omega t + \alpha)
+\end{equation}
+Описывает волну движущая в направлении положительных $ x $.
+
+Обобщая на 3х  мерный случай получим волновой вектор $ \vec{k}(k_{x},k_{y},k_{z}) $ от $ k_{x}x; k_{y}y; k_{z}z \Rightarrow \vec{k}\vec{r} $, переходим к скалярному произведению.
+
+\begin{equation}\label{56}
+\varphi =  Re\left\lbrace Ae^{i\bracket{\vec{k}\vec{r} - \omega t}} \right\rbrace 
+\end{equation}
+волновой вектор нужно записать: $\:\: \vec{k} = k_{x}\vec{i} + k_{y}\vec{j} + k_{z}\vec{z} \:\: $ и $\:\: \vec{k} = |k|\:\vec{n} = \frac{\omega}{c}, $
+где $ \vec{n} $ - вектор направленный перпендикулярно фронту волны (где движется волна).
+
+В общем случае монохроматические волны можно разложить в любую самую сложную волну. - это важный вывод.
+
+\newpage
+\begin{center}
+	\subsection*{Энергия и импульс звуковых волн} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{subsection}{Энергия и импульс звуковых волн} % Добавляет Введение в Содержание
+\end{center}
+Найдём для начала энергию заключённую волне (рис.\ref{fig::1}).
+
+Энергия в единице объёма жидкости как мы знаем представлена следующим неравенством:
+\begin{equation}\label{57}
+\rho \: \varepsilon + \frac{\rho \: v^{2}}{2},
+\end{equation}
+ конечно, оно для идеальной жидкости, а $ \varepsilon $ -внутренняя энергия единицы объёма, приход на единицу объёма.
+ 
+ Где первое слагаемое внутренняя энергия, а второе кинетическая энергия.
+ Разложим 
+\begin{equation*}
+\rho = \rho_{0} +\rho\:'
+\end{equation*}
+\begin{equation*}
+ \varepsilon =  \varepsilon_{0} + \varepsilon\:'
+\end{equation*}
+Как и ранее колебания не большие для плотности и энергии. К сожалению, скорость мы так разложить не можем так как волна покоится.
+Разложим выражение  $ \rho\:\varepsilon $ на $ \rho $ и $ S $ то есть по ТД параметрам.
+
+\begin{equation}\label{58}
+ \rho\:\varepsilon =  \rho_{0}\:\varepsilon_{0} + \bracket{\frac{\dd{ (\rho\:\varepsilon) }}{\dd{\rho}}}_{S} \: \rho\:' + \frac{1}{2}\bracket{\frac{\dd{^{2} (\rho\:\varepsilon) }}{\dd{\rho\:^{2}}}}_{S} \: \rho\:'\:^{2} + ...
+\end{equation}
+Отсутствие слагаемых с $ S $ - связано с тем что процесс адиабатический.
+Из первого начала тд известно что $ d\varepsilon = TdS - pdV = TdS - \frac{p}{\rho\:^{2}}d\rho$, а $ H = \varepsilon + \frac{p}{\rho}$.
+\begin{equation*}
+ dH = d\varepsilon + \frac{p}{\rho} + \frac{p}{\rho\:^{2}}d\rho = TdS + \frac{p}{\rho\:^{2}}d\rho + \frac{p}{\rho} + \frac{p}{\rho\:^{2}}d\rho =  TdS + \frac{p}{\rho} 
+\end{equation*}
+Всё это необходимо для работы с производными в разложении.
+\begin{equation*}
+\bracket{\frac{\dd{\varepsilon}}{\dd{\rho}}}_{S} = \frac{p}{\rho\:^{2}}
+\end{equation*}
+\begin{equation*}
+\bracket{\frac{\dd{H}}{\dd{p}}}_{S} = \frac{1}{\rho}
+\end{equation*}
+Поработаем с производной:
+\begin{equation*}
+ \bracket{\frac{\dd{ (\rho\:\varepsilon) }}{\dd{\rho}}}_{S} = \varepsilon + \rho\:\bracket{\frac{\dd{\varepsilon}}{\dd{\rho}}}_{S} = \varepsilon +  \frac{p}{\rho} = \varepsilon + pV = H
+\end{equation*}
+Неожиданно получили энтальпию.
+
+\begin{equation*}
+\dif{H}{\rho}_{S} = \dif{H}{p}_{S}\dif{p}{\rho}_{S} = \frac{1}{\rho}c^{2}
+\end{equation*}
+
+\begin{equation}\label{59}
+\rho\:\varepsilon = \rho_{0}\:\varepsilon_{0} + H_{0}\rho\:' + \frac{1}{2}\frac{c^{2}}{\rho_{0}}\rho\:'\:^{2} +...
+\end{equation}
+
+Разберем наше разложение (\ref{59}):
+Первое слагаемое $ H_{0}\rho\:' $ - это энергия единицы объёма неподвижной жидкости в которой отсутствуют колебания. Его мы отбрасываем потому что нас интересуют именно звуковые колебания.
+Второе слагаемое $ H_{0}\rho\:' $  - изменение энергии элемента жидкости связанного с его массой. Его мы отбрасываем по причине $ \int \rho\:' dV = 0 $ так как в звуковой волне среднее значение $ \bar{\rho}\:' = 0 $.
+Остается слагаемое $ \frac{1}{2}\frac{c^{2}}{\rho_{0}}\rho\:'\:^{2} $ говоря человеческим языком деформация энергии.
+
+В результате полная энергия определяется 
+\begin{equation}\label{60}
+\int_{V}\bracket{\frac{\rho_{0} \: v^{2}}{2} + \frac{c^{2}\:\rho\:'\:^{2}}{2\:\rho_{0}}}dV
+\end{equation}
+
+Теперь запишем энергию единицы объема звуковой волны:
+\begin{equation}\label{61}
+E = \frac{\rho_{0} \: v^{2}}{2} + \frac{c^{2}\:\rho\:'\:^{2}}{2\:\rho_{0}}
+\end{equation}
+и она, оказывается аналогичной энергии пружины.
+
+Если же вернуться к энергии плоской звуковой волны справедливо, что $ v = \frac{c\:\rho\:'}{\rho_{0}} $ можно выразить $ \:\rho\:' $ и подставить в (\ref{61}):
+\begin{equation}\label{62}
+E = \frac{\rho_{0} \: v^{2}}{2} + \frac{c^{2}\:\rho_{0}^{2}\:v^{2}}{2\:\rho_{0}} = \rho_{0}\:v^{2}
+\end{equation}
+Вот так мы получили выражение (\ref{62}) для плотности энергии звуковой волны.
+И это, оказывается характерным для любого гармонического осциллятора. Ну и ,конечно,звуковая волна обладает определённой энергией.
+\newpage
+\begin{center}
+	\section*{Третья пара 16.01.19} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{section}{Третья пара 16.01.19} % Добавляет Введение в Содержание
+\end{center}
+Плотность энергии связана с кинетической энергией и деформацией.
+$ E $ - это энергия при осреднении по времени даёт не нулевое значение.
+Найдём плотность потока энергии звуковой волны. 
+
+Плотность потока энергии - это количество энергии проходящее через единицу площади за единицу времени.
+В гидродинамике она представляет собой 
+\begin{equation*}
+\rho \vec{v} \bracket{\frac{v^{2}}{2} + H}
+\end{equation*}
+Если от него взять $ div $, то мы получим:
+\begin{equation*}
+\rho \varepsilon + \frac{\rho\:v^{2}}{2} 
+\end{equation*}
+Но сейчас нас интересует доля от плотности потока энергии связанная с звуковой волной.
+Раскладывая $ \rho \vec{v} \bracket{\frac{v^{2}}{2} + H} $ заметим, что $  \rho \vec{v}H \gg \frac{\rho\:v^{2}}{2}\vec{v} $. Далее мы разложим все интересующие нас величины в ряд.
+\begin{equation*}
+H = H_{0} + H'
+\end{equation*}
+\begin{equation*}
+H\:' = \dif{H}{p}_{S}p\:'
+\end{equation*}
+Одно слагаемое обусловлено как и раньше адиабатичностью процесса. И подставляя это получаем следующее выражение:
+\begin{equation*}
+ \rho\:\vec{v}H = \rho\:\vec{v}H_{0} + \rho\:\vec{v}H\:' = \rho\:\vec{v}H_{0} + \rho\:\frac{p\:'\vec{v}}{\rho}
+\end{equation*}
+В итоге полный поток энергии за единицу времени будет равняться следующему соотношению:
+\begin{equation*}
+\oint \bracket{ \rho\:\vec{v}H_{0} + p\:'\vec{v}}d \vec{S}
+\end{equation*}
+Отбрасываем слагаемое $ \rho\:\vec{v}H_{0} $, потому что этот поток энергии связан с изменением массы.
+Таким  образом плотность потока энергии обусловленная звуковой волна равна:
+\begin{equation*}
+\vec{q} = p\:'\vec{v}
+\end{equation*}
+Ну а полный поток равен 
+\begin{equation*}
+\oint p\:'\vec{v} d \vec{S}
+\end{equation*}
+Она получилась простой, потому что является продольной.
+
+Легко доказать, что 
+\begin{equation*}
+\dif{E}{t} + div(p\:'\vec{v}) = 0 
+\end{equation*}
+ЭТО ДОМАШКА НА БАЛЛЫ тут тип теор Остроградского Гаусса пригодится ну и $ v = \frac{c}{\rho_{0}}\rho\:' $ рассматривать как в Ландавшице том гидродинамика.
+
+Это соотношение выражает Закон сохранения Энергии применительно к звуковым колебаниям.
+то есть связь:
+\begin{equation*}
+p\:' = vc \rho\: \Rightarrow \vec{q} = c v^{2} \rho \vec{n},
+\end{equation*}
+где $ \vec{n} $ - направлен по распространению волны колебаний. В итоге имеем схожую с электродинамикой формулу:
+\begin{equation*}
+\vec{q} = E c \vec{n},
+\end{equation*}
+где $ E $ объёмная плотность энергии.
+В итоге в единице $ V $ заключена энергия и она переносится вдоль направления $ \vec{n} $ - единичного вектора, прошу заметить  со скорость $ c $.
+
+
+
+
+
+
+\subsubsection*{Импульс звуковых волн} % Звездочка убирает нумерацию главы
+\addcontentsline{toc}{subsubsection}{Импульс звуковых волн} % Добавляет Введение в Содержание
+\begin{equation*}
+\vec{j} = \vec{v}\rho ,
+\end{equation*}
+где $ \vec{j} $ - объёмная плотность вещества, или по-другому количество вещества проходящее через единицу площади, поток массы импульса единицы объёма.
+
+В звуковой волне:
+\begin{equation*}
+\rho  = \rho_{0} + \rho\:',
+\end{equation*}
+где $ \rho\:' $ - отклонение плотности от некоторого среднего значения.
+
+Подставим это в $ \vec{j} $:
+\begin{equation*}
+\vec{j} = \vec{v}\rho_{0}  + \vec{v}\rho \:' = \vec{v}\rho_{0} + \frac{p\:'}{c^{2}}\vec{v} = \vec{v}\rho_{0} + \frac{\vec{q}}{c^{2}}
+\end{equation*}
+Слагаемое $ \vec{v}\rho_{0} $ отбрасываем, потому что это энергия связанная с движением среды как целого.
+
+
+Рассмотрим звуковую волну занимающую ограниченную площадь в пространстве (рис.\ref{fig::2}). Пусть движение потенциально то есть $ v = \nabla\varphi $/
+
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=12cm]{2.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Локализованная волна}
+	\label{fig::2}
+\end{figure}
+
+
+Найдём полный импульс:
+\begin{equation*}
+\int \nabla\varphi \rho_{0}\:dV + \int \frac{\vec{q}}{c^{2}}\:dV
+\end{equation*}
+По теореме Остроградского-Гаусса имеем:
+\begin{equation*}
+\int \nabla\varphi\:dV = \oint \varphi \:d \vec{S}=0 
+\end{equation*}
+Ноль потому что $ \varphi_{\infty} = 0 $, то есть функция локализована в определённой области пространства, а это в свою очередь говорит о том, что среда как целое отброшена.
+Тогда имеем: 
+\begin{equation*}
+\int \frac{\vec{q}}{c^{2}}\:dV
+\end{equation*}
+это и есть полный импульс по объёму.
+Во втором порядке малости полный импульс переносимой волны не равен нулю.
+Это означает, что имеет место отличный от нуля перенос вещества. Иными словами распространение звука сопровождается переносом вещества. Однако это перенос представляет собой эффект второго порядка малости.
+
+\newpage
+\begin{center}
+	\subsection*{Отражение и преломление звуковых волн} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{subsection}{Отражение и преломление звуковых волн} % Добавляет Введение в Содержание
+\end{center}
+ Будем интересоваться откликом среды на взаимодействие звуковой волны с некоторой границей раздела (рис.\ref{fig::3}).
+ 
+ Рассмотрим несколько возможных вариантов:
+ \begin{enumerate}
+ 	\item Волна полностью отражается.
+ 	\item Волна частично, или полностью поглощается.
+ \end{enumerate}
+
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=12cm]{3.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Падающая волна}
+	\label{fig::3}
+\end{figure}
+
+При падении звуковой волны на границу раздела двух различных сред в общем случае волна отражается и преломляется.
+Так как рассматриваем сплошную среду  то логично что частоты волны сохраняются.
+\begin{equation*}
+\boxed{\omega_{1} = \omega_{2}} 
+\end{equation*}
+
+Случай первый: \underline{Отражение}
+
+Главной особенность при отражении заключается в том, что движение в первой среде является результатом наложения двух волн падающей и отражённой.
+
+Скорость звука падающей и отражённой волны должна быть одинакова, ибо всё происходит в одной среде.
+\begin{equation*}
+k_{1y} =k_{2y} 
+\end{equation*}
+\begin{equation*}
+k_{1z} =k_{2z} 
+\end{equation*}
+ Волновые числа падающей ($ k_{1} $) и отражённой ($ k_{2} $) волны должны быть равны. $ z $ - компонента определяет периодичность по $ z $, а $ y $ по  $ y $.
+ Стоит также учесть тот факт, что волновой вектор перпендикулярен фронту распространения волны.
+
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=12cm]{4.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Отражение}
+	\label{fig::4}
+\end{figure}
+
+\begin{equation*}
+k_{1y} = \frac{\omega}{c}\: sin(\: \vartheta_{1}\:) =  |k|\: sin(\: \vartheta_{1}\:)
+\end{equation*}
+\begin{equation*}
+k_{2y} = \frac{\omega}{c}\: sin(\: \vartheta_{2}\:) =  |k|\: sin(\: \vartheta_{2}\:)
+\end{equation*}
+Равенство выше глаголит, что: \textit{"Угол падения равен углу отражения"}
+\begin{equation*}
+\: \vartheta_{1}\: =  \: \vartheta_{2}\:
+\end{equation*}
+
+Случай второй: \underline{Преломление звуковых волн}
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=12cm]{5.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Преломление}
+	\label{fig::5}
+\end{figure}
+
+\begin{equation*}
+k_{1y} = \frac{\omega}{c_{1}}\: sin(\: \vartheta_{1}\:) =  |k|\: sin(\: \vartheta_{1}\:)
+\end{equation*}
+\begin{equation*}
+k_{2y} = \frac{\omega}{c_{2}}\: sin(\: \vartheta_{2}\:) =  |k|\: sin(\: \vartheta_{2}\:)
+\end{equation*}
+Но $ k_{1y} = k_{2y} $ меняется лишь $ x $  (рис.\ref{fig::5}). Поэтому приравнивая получаем:
+\begin{equation*}
+\frac{\omega}{c_{1}}\: sin(\: \vartheta_{1}\:) = \frac{\omega}{c_{2}}\: sin(\: \vartheta_{2}\:),
+\end{equation*} 
+Или по другому:
+\begin{equation*}
+\frac{sin(\: \vartheta_{1}\:)}{sin(\: \vartheta_{2}\:)}\:  = \frac{c_{1}}{c_{2}}\: ,
+\end{equation*}  
+Вот и закон преломления.
+
+
+\subsubsection*{Количественное соотношение между интенсивностями падающей, отражённой, преломлённой волны.} % Звездочка убирает нумерацию главы
+\addcontentsline{toc}{subsubsection}{Количественное соотношение между интенсивностями падающей, отражённой, преломлённой волны.} % Добавляет Введение в Содержание
+Найдём количественное соотношение между интенсивностями падающей, отражённой, преломлённой волны.  
+Ограничимся 2х мерным пространством:
+\begin{equation*}
+\vec{k}\vec{r} = k_{x}x +k_{y}y \Rightarrow k  =\frac{\omega}{c},
+\end{equation*} 
+где $ k $ - величина волнового вектора.
+
+Будем рассуждать в терминах потенциалов скорости:
+\begin{equation*}
+\varphi_{1} = A_{1}\: exp\left\lbrace i\omega\bracket{\frac{x}{c_{1}}\:cos(\:\vartheta_{1}\:) + \frac{y}{c_{1}}\:cos(\:\vartheta_{1}\:) -t} \right\rbrace  
+\end{equation*} 
+\begin{equation*}
+\varphi_{1}' = A_{1}'\: exp\left\lbrace i\omega\bracket{-\frac{x}{c_{1}}\:cos(\:\vartheta_{1}\:) + \frac{y}{c_{1}}\:cos(\:\vartheta_{1}\:) -t} \right\rbrace  
+\end{equation*} 
+\begin{equation*}
+\varphi_{2} = A_{2}\: exp\left\lbrace i\omega\bracket{\frac{x}{c_{2}}\:cos(\:\vartheta_{2}\:) + \frac{y}{c_{2}}\:cos(\:\vartheta_{2}\:) -t} \right\rbrace  
+\end{equation*} 
+$ \varphi_{1} $ - потенциал падающей волны, $ \varphi_{1}' $ - отражённой, $ \varphi_{2} $ - прошедшей.
+Стоит упомянуть о:
+\begin{equation*}
+k = \frac{\omega}{c} \Rightarrow \omega (\:\frac{k}{\omega}\:x - t) \Rightarrow (kx - \omega t)
+\end{equation*} 
+
+Гран условия которые применяем таковы:
+На поверхности раздела одинаковое давление.
+\begin{equation*}
+p = -\dot{\varphi}\rho = -\dif{\varphi}{t}\rho
+\end{equation*} 
+Его мы записываем и на потенциалы.
+\begin{equation*}
+v_{x} = \dif{\varphi}{x}
+\end{equation*} 
+На границе $ p_{1} = p_{2} $ и $ v_{x1} = v_{x2} $, а $ \dif{\varphi}\rho_{1} = \dif{\varphi}\rho_{2} $
+В итоге получаем:
+\begin{equation*}
+ \begin{cases}
+\rho_{1}\bracket{A_{1}-A_{1}'} = \rho_{1} A_{2} \\
+\dif{\varphi_{1}}{x} = \dif{\varphi_{2}}{x}
+\end{cases}
+\end{equation*} 
+И это всё при $ x = 0 $.
+\begin{equation*}
+\frac{cos(\:\vartheta_{1}\:)}{c_{1}}\bracket{A_{1}-A_{1}'}= \frac{cos(\:\vartheta_{2}\:)}{c_{1}}A_{2}
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+\end{document}
