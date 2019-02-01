@@ -472,7 +472,7 @@ $ T $ - регулируемый параметр $ C \sim \sqrt{T} $.
 \frac{\dd{^{2}\:\varphi}}{\dd{t^{2}}} = C^{2}\Delta\:\varphi
 \end{equation}
 
-\underline{Монохроматические волны} - гармонические функции по времене. Будем искать решение этого уравнения в экспоненциальной форме.
+\underline{Монохроматические волны} - гармонические функции по времени. Будем искать решение этого уравнения в экспоненциальной форме.
 $ \varphi(x,y,z,t) $.
 
 \begin{equation}\label{52}
@@ -940,7 +940,7 @@ R = \bracket{\frac{\frac{\rho_{2}}{\rho_{1}} - \frac{tg(\:\vartheta_{1}\:)}{tg(\
 \begin{equation*}
 R = \bracket{\frac{\frac{\rho_{2}\:\frac{c_{2}}{c_{1}}\:\sin(\: \vartheta_{1}\:)}{\sqrt{\bracket{1 - \frac{c_{2}^{2}}{c_{1}^{2}}\:\sin^{2}(\: \vartheta_{1}\:) }}} - \rho_{1}\:\frac{\sin(\:\vartheta_{1}\:)}{\cos(\:\vartheta_{1}\:)}}{\frac{\rho_{2}\:\frac{c_{2}}{c_{1}}\:\sin(\: \vartheta_{1}\:)}{\sqrt{\bracket{1 - \frac{c_{2}^{2}}{c_{1}^{2}}\:\sin^{2}(\: \vartheta_{1}\:) }}} - \rho_{1}\:\frac{\sin(\:\vartheta_{1}\:)}{\cos(\:\vartheta_{1}\:)}}}^{2} = \bracket{\frac{\rho_{2}\:\frac{c_{2}}{c_{1}}\:\sin(\: \vartheta_{1}\:)\cos(\: \vartheta_{1}\:) - \rho_{1}\:\sin(\: \vartheta_{1}\:)\sqrt{...}}{\rho_{2}\:\frac{c_{2}}{c_{1}}\:\sin(\: \vartheta_{1}\:)\cos(\: \vartheta_{1}\:) + \rho_{1}\:\sin(\: \vartheta_{1}\:)\sqrt{...}}}^{2}
 \end{equation*}
-Преобразуя, получаем:
+После преобразования, получаем:
 \begin{equation*}
 R = \bracket{\frac{\rho_{2}\:\frac{c_{2}}{c_{1}}\:\cos(\: \vartheta_{1}\:) - \rho_{1}\:\sqrt{...}}{\rho_{2}\:\frac{c_{2}}{c_{1}}\:\cos(\: \vartheta_{1}\:) + \rho_{1}\:\sqrt{...}}}^{2}  =\bracket{\frac{\rho_{2}\:c_{2}\cos(\:\vartheta_{1}\:) - \rho_{1}\:\sqrt{c^{2}_{1}-c^{2}_{1}\sin^{2}(\: \vartheta_{1}\:) }}{\rho_{2}\:c_{2}\cos(\:\vartheta_{1}\:) + \rho_{1}\:\sqrt{c^{2}_{1}-c^{2}_{1}\sin^{2}(\: \vartheta_{1}\:) }}}^{2} 
 \end{equation*}
@@ -1115,8 +1115,13 @@ $ \dot{\vec{r}} $ координата луча по времени. По физ
 \end{equation}
 \begin{figure}[h!] 	% Окружение для вставки иллюстрации
 	\centering 		% Выравнивание по центру
-	\includegraphics[width=5cm]{7.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\includegraphics[width=10cm]{8.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
 	\label{fig::7}
+\end{figure}
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=5cm]{7.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\label{fig::8}
 \end{figure}
 где $ R $ - радиус кривизны, $ \vec{N}  $ -единичный вектор направленный к центру окружности, или по другому единичный вектор главной нормали.
 
@@ -1172,6 +1177,64 @@ $ U = \dif{\omega}{\vec{k}} $ - групповая скорость.
 должен убывать при $ r \longrightarrow \infty $. $ f(\vec{r}) $ - амплитуда зависящая от координат, которая описывает волну локализованную в пространстве.
 Разложим $ f(\vec{r}) $ в ряд Фурье по плоским волнам.
 
+Каждая Фурье компонента $ \varphi_{k}\sim e^{i\vec{k}\vec{r} + i\Delta\vec{k}\vec{r}}=e^{i((\vec{x}+\Delta\vec{x})\vec{r}} $
+Частота является функцией волнового числа $ (\vec{k} + \Delta\vec{k}) \:$, то есть $ \omega(\vec{k} + \Delta\vec{k}) $. Где $ \Delta\vec{k} $ - отклонение от базового.
 
- 
+Итак для момента времени $ t $ имеем:
+\begin{equation*}
+\varphi_{k}\sim exp\left\lbrace i(\vec{k} + \Delta\vec{k})\vec{r}- i\omega t\right\rbrace 
+\end{equation*}
+
+Разложим частоту вблизи базовой частоты:
+\begin{equation*}
+\omega(\vec{k} + \Delta\vec{k})\approx \omega(\vec{k}) +\dif{\omega}{\vec{k}}\Delta\vec{k},
+\end{equation*}
+ подставим это в Фурье компоненты.
+\begin{equation*}
+\varphi_{k}\sim exp\left\lbrace i(\vec{k} + \Delta\vec{k})\vec{r}- i\omega t - i\dif{\omega}{\vec{k}}\Delta\vec{k}t \right\rbrace 
+\end{equation*}
+ Ограничиваясь линейными слагаемыми получаем:
+\begin{equation*}
+\varphi_{k}\sim e^{i(\vec{k}\vec{r}-\omega t)} 
+exp\left\lbrace i\Delta\vec{k}(\vec{r} - i\dif{\omega}{\vec{k}}t) \right\rbrace 
+\end{equation*}
+Собирая обратно разложение получаем потенциал в момент времени $ t $:
+\begin{equation*}
+\varphi = e^{i(\vec{k}\vec{r}-\omega t)} f\left(\vec{r} - i\dif{\omega}{\vec{k}}t \right) 
+\end{equation*}
+То есть волновой пакет за время $ t $ перемещается со скоростью $ \dif{\omega}{\vec{k}} $ на расстояние $ \dif{\omega}{\vec{k}}t $.
+А групповая скорость - это скорость движения волнового цуга.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
