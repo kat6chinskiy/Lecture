@@ -42,6 +42,7 @@ right=1.5cm,vmargin=2.5cm]{geometry} % Отступы по краям листа
 \newcommand{\dd}[1] {\partial #1 }
 \newcommand{\dif}[2] {\bracket{ \frac{\partial #1}{\partial #2} }}
 \newcommand{\diff}[2] {\frac{\partial #1}{\partial #2} }
+\newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
 
 \begin{document}
 	% << и « одно и то же
@@ -99,37 +100,37 @@ right=1.5cm,vmargin=2.5cm]{geometry} % Отступы по краям листа
  Где эти два слагаемых являются равновесными значениями.
  А когда мы вносим возмущения появляются слагаемые со штрихом в итоге имеем
 
-\begin{eqnarray}
+\begin{eqnarray*}
 \rho = \rho_{0} + \rho' \\
 p = p_{0} + p'
-\end{eqnarray}
+\end{eqnarray*}
 
 
 То есть слагаемые со штрихом говорят о малом отклонении от равновесного значения, также поправки являются не стационарными.
 $ \rho_{0} >> \rho' $ и 
 $ p_{0} >> p' $
 В результате уравнение Эйлера имеет вид:
-\begin{equation}\label{3}
+\begin{equation*}
 \frac{\partial \vec{v}}{\partial t} + (\vec{v}\:\nabla)\vec{v} = -\frac{1}{\rho}\: \nabla p
-\end{equation}
+\end{equation*}
 
 Так как среда однородна то давление $ p_{0} = 0 $, а если разложить в ряд слагаемое $ \frac{1}{\rho} $ то в первом приближении получаем $ \frac{1}{\rho_{0}} $.
 В результате чего имеем:
-\begin{equation}\label{4}
+\begin{equation*}
 \frac{\partial \vec{v}}{\partial t} + \frac{1}{\rho_{0}}\: \nabla p' = 0
-\end{equation}
+\end{equation*}
 где $ \vec{v} $ - и есть скорость возмущения.
 Помимо этого запишем уравнение неразрывности 
-\begin{equation}\label{5}
+\begin{equation*}
 \frac{\partial \rho}{\partial t} + div( \rho \vec{v}) = 0
-\end{equation}
+\end{equation*}
 Вновь расписывая $ \rho $ и $ p $ получается следующее:
 слагаемое $ \frac{\partial \rho_{0}}{\partial t} = 0 $, а $ div( \rho'\vec{v}') $ нелинейная и мала по сравнению с $ div( \rho_{0}\vec{v}) $. То есть в итоге получили следующее выражение:
-\begin{equation}\label{6}
+\begin{equation*}
 \frac{\partial \rho'}{\partial t} + \rho_{0}\: div(\vec{v}) = 0
-\end{equation}
+\end{equation*}
 
-Говоря простым языком мы разложили все в ряд и выделили главные компоненты (основные (играющие главенствующую роль)). Или по простому лиениризовали систему уравнений.
+Говоря простым языком мы разложили все в ряд и выделили главные компоненты (основные (играющие главенствующую роль)). Или по простому линеаризовали систему уравнений.
 
 У нас получилось, что каждое слагаемое линейно по величине. И линейную систему всегда можно решить. И решение будет единственным, а решить можно аналитически.
 
@@ -177,10 +178,10 @@ $ \looparrowright $
 Это одно из основополагающее отличие от электромагнитной волны, потому что она поперечная.
 
 Мы ищем решение в виде продольной волны.
-\begin{eqnarray}
+\begin{eqnarray*}
 v_{x} (x,t) \\
 \rho\:'(x,t)
-\end{eqnarray}
+\end{eqnarray*}
 
 Имеем волну движущуюся вдоль оси $ x $.
 
@@ -194,9 +195,9 @@ v_{x} (x,t) \\
 Ищем однородное решение по $ x $ и $ z $
 [ под однородностью понимается отсутствие зависимости от $ x $ и $ z $, её одинаковость ].
 
-\begin{equation}\label{11}
+\begin{equation*}
 \frac{\partial \vec{v}_{x}}{\partial t} + \frac{1}{\rho_{0}}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} \frac{\partial\rho\:'}{\partial x} = 0.
-\end{equation}
+\end{equation*}
 про diff по времени и получим:
 \begin{equation}\label{12}
 \frac{\partial^{2} \vec{v}_{x}}{\partial t^{2}} + \frac{1}{\rho_{0}}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} \frac{\partial}{\partial x}\frac{\partial\rho\:'}{\partial t} = 0.
@@ -258,9 +259,9 @@ $ c $ - скорость волны, попрошу внимания "звуко
 \end{equation}
 
 Вернёмся к уравнению непрерывности (неразрывности) (\ref{10}) используя $ p\:' $.
-\begin{equation}\label{19}
+\begin{equation*}
 \frac{\partial \rho\:'}{\partial t} + \rho_{0}\:\left( \frac{\partial p}{\partial \rho} \right)_{S} div(\vec{v}) = 0 \Rightarrow - \rho_{0}\:\frac{\partial^{2} \varphi}{\partial t^{2}} + \rho_{0}\left( \frac{\partial p}{\partial \rho} \right)_{S} div(grad(\varphi)) = 0
-\end{equation}
+\end{equation*}
 
 То есть снова пришли к волновому уравнению:
 \begin{equation}\label{20}
@@ -274,23 +275,23 @@ $ c $ - скорость волны, попрошу внимания "звуко
 \frac{\partial \varphi}{\partial x} = \frac{\partial \varphi}{\partial \eta}\frac{\partial \eta}{\partial x} + \frac{\partial \varphi}{\partial \xi}\frac{\partial \xi}{\partial x} =  \frac{\partial \varphi}{\partial \eta}\cdot 1 + \frac{\partial \varphi}{\partial \xi}\cdot 1 = \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi}
 \end{equation}
  Используем это для получения второй производной:
- \begin{eqnarray}\label{22}
+ \begin{eqnarray*}
  \frac{\partial^{2} \varphi}{\partial x^{2}} = \frac{\partial}{\partial x} \left( \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi} \right) = \frac{\partial }{\partial \eta}\frac{\partial \varphi}{\partial x} + \frac{\partial}{\partial \xi}\frac{\partial \varphi}{\partial x} \\
   = \frac{\partial }{\partial \eta} \left( \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi} \right) + \frac{\partial }{\partial \xi} \left( \frac{\partial \varphi}{\partial \eta} + \frac{\partial \varphi}{\partial \xi} \right) = \\
    \frac{\partial^{2} \varphi}{\partial \eta^{2}} + \frac{\partial^{2} \varphi}{\partial \eta \partial \xi} + \frac{\partial^{2} \varphi}{\partial \xi \partial \eta} + \frac{\partial^{2} \varphi}{\partial \xi^{2}} = 
       \frac{\partial^{2} \varphi}{\partial \eta^{2}} + \frac{2\:\partial^{2} \varphi}{\partial \eta \partial \xi} +  \frac{\partial^{2} \varphi}{\partial \xi^{2}}
- \end{eqnarray}
+ \end{eqnarray*}
 Подобным образом распишем производную по времени:
 \begin{eqnarray}\label{23}
 \frac{\partial \varphi}{\partial t} = \frac{\partial \varphi}{\partial \eta}\frac{\partial \eta}{\partial t} + \frac{\partial \varphi}{\partial \xi}\frac{\partial \xi}{\partial t} = \frac{\partial \varphi}{\partial \eta}\cdot c - \frac{\partial \varphi}{\partial \xi}\cdot c
 \end{eqnarray}
 
- \begin{eqnarray}\label{24}
+ \begin{eqnarray*}
 \frac{\partial^{2} \varphi}{\partial t^{2}} = \frac{\partial}{\partial t}\left[ c \cdot \left( \frac{\partial \varphi}{\partial \eta} - \frac{\partial \varphi}{\partial \xi} \right)\right]  = c \cdot \frac{\partial }{\partial \eta}\frac{\partial \varphi}{\partial t} - c\cdot \frac{\partial}{\partial \xi}\frac{\partial \varphi}{\partial t} \\
 = c\cdot \frac{\partial }{\partial \eta} \left( \frac{\partial \varphi}{\partial \eta}\cdot c -  \frac{\partial \varphi}{\partial \xi}\cdot c \right) - c\cdot \frac{\partial }{\partial \xi} \left( \frac{\partial \varphi}{\partial \eta}\cdot c - \frac{\partial \varphi}{\partial \xi} \cdot c \right) = \\
 c^{2}\cdot\frac{\partial^{2} \varphi}{\partial \eta^{2}} - c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \eta \partial \xi} - c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \xi \partial \eta} + c^{2}\cdot \frac{\partial^{2} \varphi}{\partial \xi^{2}} = 
 c^{2}\cdot \left[ \frac{\partial^{2} \varphi}{\partial \eta^{2}} - \frac{2\:\partial^{2} \varphi}{\partial \eta \partial \xi} +  \frac{\partial^{2} \varphi}{\partial \xi^{2}}\right] 
-\end{eqnarray}
+\end{eqnarray*}
 
 Теперь подставим в уравнение (\ref{20}), которое записывается в нашем случае следующим образом $ \frac{\partial^{2} \varphi}{\partial t^{2}} - c^{2} \frac{\partial^{2} \varphi}{\partial x^{2}} = 0 $
 
@@ -303,18 +304,18 @@ c^{2}\cdot \left[ \frac{\partial^{2} \varphi}{\partial \eta^{2}} - \frac{2\:\par
 Найдём общее решение этого уравнения.
 
 После первого интегрирования по $ \eta $ получим:
-\begin{equation}\label{26}
+\begin{equation*}
 \frac{\partial \varphi}{\partial \xi} = f(\xi)
-\end{equation}
+\end{equation*}
 Второе интегрирование даёт:
-\begin{equation}\label{27}
+\begin{equation*}
 \varphi = \underbrace{\int f_{1}(\xi)d\xi}_{\text{переходит в}\tilde{f_{1}}(\xi)} + f_{2}(\eta)
-\end{equation}
+\end{equation*}
 
 Упустим тильду и получим следующее :
-\begin{equation}\label{28}
+\begin{equation*}
 \varphi = f_{1}(\xi) + f_{2}(\eta).
-\end{equation}
+\end{equation*}
 Это одно из фундаментальных свойств гиперболического уравнения.
 Вернёмся к исходным переменным:
 \begin{equation}\label{29}
@@ -344,13 +345,13 @@ c^{2}\cdot \left[ \frac{\partial^{2} \varphi}{\partial \eta^{2}} - \frac{2\:\par
 p\:' = - \rho_{0} \frac{\partial \varphi}{\partial t} =  - \rho_{0} \:f\:'(x-ct)\cdot(-c) = \rho_{0}\:c \:f\:'(x-ct)
 \end{equation}
 Исключим $ f' $ из уравнения (\ref{31})
-\begin{equation}\label{33}
+\begin{equation*}
 p\:' = \rho_{0}\:c \: v_{x} \Rightarrow  v_{x} = \frac{p\:'}{\rho_{0}\:c}
-\end{equation}
+\end{equation*}
 Если воспользоваться уравнением состояния записанного ранее (\ref{18}) $ p' = c^{2}  \rho\:' $ выражение для скорости приобретёт следующий вид:
-\begin{equation}\label{34}
+\begin{equation*}
 v_{x}= \frac{c \rho\:'}{\rho_{0}}.
-\end{equation}
+\end{equation*}
 По всему выходит, что все величины завязаны друг на друге.
 
 Мини итог:
@@ -408,7 +409,7 @@ dH = d(\varepsilon) + d(pV) = TdS - pdV + pdV +Vdp = TdS + Vdp
 \begin{equation}\label{42}
 T\:' = \frac{T}{C_{p}}\beta V_{0}p\:' = \text{подставляем}\:\: p\:'=  \frac{T}{C_{p}}\beta V_{0}\frac{C}{V_{0}}v = \frac{T}{C_{p}}\beta v C 
 \end{equation}
-Выражение \ref{42} очень важно. 
+Выражение (\ref{42}) очень важно. 
 Эти соотношение демонстрируют, что все величины в звуковой волне меняются синхронно.
 
 Вот ещё 2 ТД тождества 
@@ -425,15 +426,15 @@ T\:' = \frac{T}{C_{p}}\beta V_{0}p\:' = \text{подставляем}\:\: p\:'= 
 
 Известно соотношение, что $ C_{p}\: > \: C_{v} $
 Вспомним, что теплоёмкость это энергия которая необходима для того чтобы нагреть тело на $ 1 $ градус. 
-\begin{equation}\label{44}
+\begin{equation*}
 \underbrace{\bracket{\frac{\partial p}{\partial \rho}}_{S}}_{\text{Сжимаемость}} = \frac{C_{p}}{C_{v}}\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T} = \text{Обозначим} = \gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T},
-\end{equation}
+\end{equation*}
 где $ \gamma $ - отношение теплоёмкостей.
 
 Вот и оказывается что скорость $ c $:
-\begin{equation}\label{45}
+\begin{equation*}
 c^{2} = \underbrace{\bracket{\frac{\dd{p}}{\dd{\rho}}}_{S}}_{\text{Это нельзя выяснить теоретически}} = \gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T},
-\end{equation}
+\end{equation*}
 Воспользуемся уравнением состояния газа:
 \begin{equation}\label{46}
 \frac{pV}{T} = R\frac{m}{\mu},
@@ -448,9 +449,9 @@ p = \rho\: T\frac{R}{\mu},
 \bracket{\frac{\dd{p}}{\dd{\rho}}}_{T} = \frac{TR}{\mu},
 \end{equation} 
 можно к примеру выразить скорость звука.
-\begin{equation}\label{49}
+\begin{equation*}
 c^{2} = \gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T},
-\end{equation}
+\end{equation*}
 \begin{equation}\label{50}
 c = \sqrt{\gamma\bracket{\frac{\dd{p}}{\dd{\rho}}}_{T}} = \sqrt{\gamma\bracket{\frac{TR}{\mu}}},
 \end{equation}
@@ -475,9 +476,9 @@ $ T $ - регулируемый параметр $ C \sim \sqrt{T} $.
 \underline{Монохроматические волны} - гармонические функции по времени. Будем искать решение этого уравнения в экспоненциальной форме.
 $ \varphi(x,y,z,t) $.
 
-\begin{equation}\label{52}
+\begin{equation*}
 \varphi = Re\left\lbrace \varphi_{0}\e\right\rbrace 
-\end{equation}
+\end{equation*}
 P.S. - мы используем только реальную часть, потому что скорость не может быть мнимой.
 
 Если ищем в таком виде то мы отделяем временную переменную .
@@ -523,16 +524,16 @@ k = \frac{2\pi}{\lambda}
 \end{equation*}
 $ A $ так как комплексное число то запишем его как $ A = a\:e^{i\alpha} $
 где $ a $ -амплитуда и тогда можно подставить в (\ref{54}) и досчитать.
-\begin{equation}\label{55}
+\begin{equation*}
 \varphi =  a\: \cos(kx-\omega t + \alpha)
-\end{equation}
+\end{equation*}
 Описывает волну движущая в направлении положительных $ x $.
 
 Обобщая на 3х  мерный случай получим волновой вектор $ \vec{k}(k_{x},k_{y},k_{z}) $ от $ k_{x}x; k_{y}y; k_{z}z \Rightarrow \vec{k}\vec{r} $, переходим к скалярному произведению.
 
-\begin{equation}\label{56}
+\begin{equation*}
 \varphi =  Re\left\lbrace Ae^{i\bracket{\vec{k}\vec{r} - \omega t}} \right\rbrace 
-\end{equation}
+\end{equation*}
 волновой вектор нужно записать: $\:\: \vec{k} = k_{x}\vec{i} + k_{y}\vec{j} + k_{z}\vec{z} \:\: $ и $\:\: \vec{k} = |k|\:\vec{n} = \frac{\omega}{c}, $
 где $ \vec{n} $ - вектор направленный перпендикулярно фронту волны (где движется волна).
 
@@ -562,9 +563,9 @@ $ A $ так как комплексное число то запишем его
 Как и ранее колебания не большие для плотности и энергии. К сожалению, скорость мы так разложить не можем так как волна покоится.
 Разложим выражение  $ \rho\:\varepsilon $ на $ \rho $ и $ S $ то есть по ТД параметрам.
 
-\begin{equation}\label{58}
+\begin{equation*}
  \rho\:\varepsilon =  \rho_{0}\:\varepsilon_{0} + \bracket{\frac{\dd{ (\rho\:\varepsilon) }}{\dd{\rho}}}_{S} \: \rho\:' + \frac{1}{2}\bracket{\frac{\dd{^{2} (\rho\:\varepsilon) }}{\dd{\rho\:^{2}}}}_{S} \: \rho\:'\:^{2} + ...
-\end{equation}
+\end{equation*}
 Отсутствие слагаемых с $ S $ - связано с тем что процесс адиабатический.
 Из первого начала тд известно что $ d\varepsilon = TdS - pdV = TdS - \frac{p}{\rho\:^{2}}d\rho$, а $ H = \varepsilon + \frac{p}{\rho}$.
 \begin{equation*}
@@ -591,17 +592,17 @@ $ A $ так как комплексное число то запишем его
 \rho\:\varepsilon = \rho_{0}\:\varepsilon_{0} + H_{0}\rho\:' + \frac{1}{2}\frac{c^{2}}{\rho_{0}}\rho\:'\:^{2} +...
 \end{equation}
 
-Разберем наше разложение (\ref{59}):
+Разберём наше разложение (\ref{59}):
 Первое слагаемое $ H_{0}\rho\:' $ - это энергия единицы объёма неподвижной жидкости в которой отсутствуют колебания. Его мы отбрасываем потому что нас интересуют именно звуковые колебания.
 Второе слагаемое $ H_{0}\rho\:' $  - изменение энергии элемента жидкости связанного с его массой. Его мы отбрасываем по причине $ \int \rho\:' dV = 0 $ так как в звуковой волне среднее значение $ \bar{\rho}\:' = 0 $.
-Остается слагаемое $ \frac{1}{2}\frac{c^{2}}{\rho_{0}}\rho\:'\:^{2} $ говоря человеческим языком деформация энергии.
+Остаётся слагаемое $ \frac{1}{2}\frac{c^{2}}{\rho_{0}}\rho\:'\:^{2} $ говоря человеческим языком деформация энергии.
 
 В результате полная энергия определяется 
-\begin{equation}\label{60}
+\begin{equation*}
 \int_{V}\bracket{\frac{\rho_{0} \: v^{2}}{2} + \frac{c^{2}\:\rho\:'\:^{2}}{2\:\rho_{0}}}dV
-\end{equation}
+\end{equation*}
 
-Теперь запишем энергию единицы объема звуковой волны:
+Теперь запишем энергию единицы объёма звуковой волны:
 \begin{equation}\label{61}
 E = \frac{\rho_{0} \: v^{2}}{2} + \frac{c^{2}\:\rho\:'\:^{2}}{2\:\rho_{0}}
 \end{equation}
@@ -1322,21 +1323,362 @@ f = f_{1}(ct-r) + f_{2}(ct+r).
 \end{equation*}
 Но помнить нужно об истине простой, $ r = 0 $ не является узлом стоячей волны, она лишь соответствует пучности.  
 
+\newpage
+\begin{center}
+	\section*{Седьмая пара 20.02.19} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{section}{Седьмая пара 20.02.19} % Добавляет Введение в Содержание
+	
+	\subsection*{Цилиндрические волны} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{subsection}{Цилиндрические волны} % Добавляет Введение в Содержание
+\end{center}
+
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=7cm]{11.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+\end{figure}
+
+Сформулируем задачу в терминах потенциалов скорости.
+В цилиндрической системе координат решение для волны как и ранее обладает осе симметрией и поэтому в уравнении Лапласа остаётся только радиальная часть:  
+\begin{equation*}
+	\frac{1}{r}\frac{\partial }{\partial r}\left(r\frac{\partial \varphi}{\partial r} \right) - \frac{1}{c^{2}}\frac{\partial^{2} \varphi}{\partial t^{2}} = 0.
+\end{equation*}
+Это уравнение описывает бездисперсионные волны. Решение будем искать в виде $ \varphi = e^{-i\omega t}\:f(r)  $, стоит также оговориться, что волна является монохроматической. Подставляя в выражение имеем:
+\begin{equation*}
+e^{-i\omega t}\frac{1}{r}\frac{\partial }{\partial r}\left(r\frac{\partial f(r)}{\partial r} \right) - e^{-i\omega t}\frac{1}{c^{2}}f(r) \omega^{2},
+\end{equation*}
+ учитывая, что $ \frac{\omega^{2}}{c^{2}} = k^{2} $, мы так ввели.
+ Получим уравнение описывающее пространственную часть:
+ \begin{equation*}
+f''+\frac{1}{r}f'+k^{2}f^{2}=0.
+ \end{equation*}
+Оно, конечно известно для мат.физики. И представляет собой функцию Бесселя нулевого порядка (рис.\ref{fig::11}).
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=10cm]{BS.png} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Функция Бесселя}
+	\label{fig::11}
+\end{figure}
+Для начала выясним как будет выглядеть решение в случае стоячей волны при $ r = 0, \;\varphi  $ - остаётся конечной. В итоге решением будет функция Бесселя \RomanNumeralCaps{1} го рода $ J_{0}(kr) $.
+Для стоячей волны имеем следующее решение:
+ \begin{equation*}
+\varphi = A e^{-i\omega t}\:J_{0}(kr).
+\end{equation*}
+ 
+Из справочника Корна на больших расстояниях имеем следующее выражение:
+\begin{equation*}
+J_{m}(z) \approx \sqrt{\frac{2}{\pi z}}\left[A_{m}(z)cos\left(z - \frac{m\pi}{2} - \frac{\pi}{4} \right) - B_{m}(z)\sin\left(z - \frac{m\pi}{2} - \frac{\pi}{4} \right)   \right],
+\end{equation*}
+\begin{equation*}
+A_{m}(z)  \approx  1 - \frac{(4m^{2}-1)(4m^{2}-9)}{2!(8z)^{2}} + ...\;,
+\end{equation*}
+\begin{equation*}
+B_{m}(z)  \approx  \frac{(4m^{2}-1)}{8z} - ...\;.
+\end{equation*}
+при $ z \longrightarrow 0 ,\; A_{m}(z) \longrightarrow 1,\; B_{m}(z) \longrightarrow 0 $, тогда:
+\begin{equation*}
+ J_{0}(z) = \sqrt{\frac{2}{\pi z}}\cos\left(z - \frac{\pi}{4} \right) \Rightarrow
+\end{equation*}
+\begin{equation*}
+\varphi = A\sqrt{\frac{2}{\pi z}}\frac{\cos\left(z - \frac{\pi}{4} \right) }{\sqrt{kr}}e^{-i\omega t},
+\end{equation*}
+полученное решение оговоримся применимо на больших расстояниях. Амплитуда убывает как $ \frac{1}{\sqrt{r}} $.
+Вот и различие с сферическими там сразу синус, а тут Бессель всё не так убывает, + различие в интенсивности и амплитуде $  (\text{интенсивность} = \text{амплитуда}^{2}) $
+
+Решение для расходящейся (бегущей волны) имеет вид:
+\begin{equation*}
+\varphi = A e^{-i\omega t}\:H_{0}^{1}(kr),
+\end{equation*}
+где $ H_{0}^{1} $ - функция Ханкеля \RomanNumeralCaps{1} го рода.
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=10cm]{NM.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Функция Неймана}
+	\label{fig::12}
+\end{figure}
+ 
+\begin{equation*}
+ H_{m}^{1} = J_{m} + iN_{m},
+\end{equation*}
+$ J_{m}  $ - конечно, $ N_{m} $ - расходится при $ r = 0 $, а называется функцией Неймана (рис.\ref{fig::12}).
+При $ z \longrightarrow 0  $ 
+
+\begin{equation*}
+H_{0}^{1} \sim \frac{2i}{\pi}\ln\frac{z}{2},
+\end{equation*}
+то есть пренебрегаем $ J_{m} $ и тогда результирующий потенциал:
+ \begin{equation*}
+ \varphi = Ae^{-i\omega t}\left( \frac{2i}{\pi}\ln\frac{kr}{2} \right).
+ \end{equation*}
+На больших расстояниях, когда $ z\longrightarrow \infty $
+ \begin{equation*}
+H_{m}^{1}(z) = \sqrt{\frac{2}{\pi z}}e^{i\left(z - \frac{m\pi}{2} - \frac{\pi}{4} \right) }, \text{так как m = 0}
+\end{equation*}
+получаем для потенциала следующее:
+\begin{equation*}
+\varphi = A\sqrt{\frac{2}{\pi}}\frac{e^{i\left(kr - \omega t - \frac{\pi}{4}\right) }}{\sqrt{kr}}.
+\end{equation*}
+На больших расстояниях амплитуда цилиндрической волны падает по закону  $ \frac{1}{\sqrt{r}} $. То есть также как и у стоячей волны. То есть сферическую и цилиндрическую волну можно различить.
+
+\begin{center}
+	\subsection*{Боковая волна} % Звездочка убирает нумерацию главы
+\addcontentsline{toc}{subsection}{Боковая волна} % Добавляет Введение в Содержание
+\end{center}
+
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=10cm]{12.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{$ c_{1} > c_{2} $}
+	\label{fig::13}
+\end{figure}
+
+Рассмотрим задачу с границей раздела (рис.\ref{fig::13}).
+Области $ 1 $ и $ 2 $ - разные среды, $ Q $ - точечный источник сферической звуковой волны, $ Q' $ - зеркальное изображение источника.
+Например звук из стекла в воздух (особенность звука как мы помним, если не помним, вспомни!).
+Таким образом фронт волны - это отражённая волна от источника.
+Граница раздела  - это граница в которой существует несколько решений.
+Но если поставим приёмник, то сначала в приёмник придёт прямая волна, потом отражённая.
+
+Рассмотрим задачу с границей раздела (рис.\ref{fig::14}).
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=14cm]{13.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{$ c_{1} < c_{2} $}
+	\label{fig::14}
+\end{figure}
+Видно, что создаётся необычное явление, а именно боковая волна.
+
+\begin{center}
+	\subsection*{Поглощение звука} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{subsection}{Поглощение звука} % Добавляет Введение в Содержание
+	\textit{ Формула Киргофа }
+\end{center}
+
+Учтём теперь наличие у среды вязкости и теплопроводности. И рассмотрим такую среду по отношению к акустическим волнам.
+И индюку ясно, что вязкость и теплопроводность приводит к потере энергии звуковых волн.
+
+В истории сначала Стокс рассмотрел вязкость. А потом Киргоф добавил теплопроводность и теплопроводность оказалась порядка влиянию вязкости.
+
+Будем интересоваться $ \dot{E}_{mek} $ - диссипируемой за единицу времени механической энергией.
+\begin{equation*}
+E_{mek} = E_{0} - E(S),
+\end{equation*}
+где $ E_{0} $ - начальная энергия, $ E(S) $ - энергия тела в конечном состоянии с энтропией $ S $, которая была вначале.
+
+Максимальная работа совершаемая  системой, когда система переходит в конечное состояние обратимым образом, через равновесное состояние с неизменной энтропией $ S $.
+\begin{equation*}
+\dot{E}_{mek} = - \dot{E}(S) = \frac{\partial E}{\partial S}\dot{S}\:\longrightarrow\: \frac{\partial E}{\partial S} = T \:\longrightarrow\: dE = TdS - pdV  \:\longrightarrow\: \dot{E}_{mek} = - TS.
+\end{equation*}
+
+\begin{equation*}
+\dot{S} = \frac{\kappa}{T^{2}}\int\left(\nabla T \right)^{2}dV + \frac{\eta}{2T}\int\left(\frac{\partial v_{i}}{\partial x_{k}} + \frac{\partial v_{k}}{\partial x_{i}} -\frac{2}{3}\delta_{ik}\frac{\partial v_{l}}{\partial x_{l}} \right)^{2}dV + \frac{\xi}{T} \int div(\vec{v})^{2}dV,
+\end{equation*}
+Первое слагаемое отвечает за изменение энтропии за счёт теплопроводности, второе с третьим за изменение энтропии за счёт внутреннего трения.$ \kappa $ - Коэффициент теплопроводности, $ \eta $ - коэффициент динамической вязкости, $ \xi  $ - коэффициент объёмного трения.
+Эта формула демонстрирует за счёт каких механизмов может меняться энтропия рассматриваемого объёма жидкости.
+
+Применим для плоской одномерной волны. 
+\begin{equation*}
+v_{x} = v_{0} \cos (kx - \omega t),\;\;\;\; v_{y} =0,\;\;\;\; v_{z} = 0.
+\end{equation*}
+Подставим в выражение:
+\begin{equation*}
+\frac{\eta}{2}\int\int \left(\eta - \frac{2}{3} \right)^{2}\left[\left(\frac{\partial v_{x}}{\partial x} \right)^{2} + \frac{4}{3}\left(\frac{\partial v_{x}}{\partial x} \right)^{2} + \frac{4}{3}\left(\frac{\partial v_{x}}{\partial x} \right)^{2}  \right]dV + \xi\left(\frac{\partial v_{x}}{\partial x} \right)^{2}dV =
+\end{equation*}
+\begin{equation*}
+= \frac{\eta}{2}\int \frac{16+8}{9}\left(\frac{\partial v_{x}}{\partial x} \right)^{2}dV +\xi\int\left(\frac{\partial v_{x}}{\partial x} \right)^{2}dV = \left(\frac{4}{3}\eta + \xi \right) \int\left(\frac{\partial v_{x}}{\partial x} \right)^{2}dV
+\end{equation*}
+
+\begin{equation*}
+T_{ij}T_{ij} = T_{11}T_{11} + T_{22}T_{22} + T_{33}T_{33}
+\end{equation*}
 
 
+\begin{equation*}
+\frac{\partial v_{x}}{\partial x} = -v_{0}k\sin(kx-\omega t)
+\end{equation*}
+\begin{equation*}
+\int\sin^{2}(kx-\omega t)dV = \frac{1}{2}V_{0},
+\end{equation*}
+среднее значение от $  \sin^{2}  = \frac{1}{2} $, $ V_{0} $ - объём среды.
+В результате имеем:
+\begin{equation*}
+\frac{1}{2}v_{0}^{2}k^{2}V_{0}\left( \frac{4}{3}\eta + \xi\right),
+\end{equation*}
+$ v_{0} $ - амплитуда скорости.\\
+Это вклад в полное изменение энтропии от вязких сил трения.
 
+\newpage
+\begin{center}
+	\section*{Восьмая пара 27.02.19} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{section}{Восьмая пара 27.02.19} % Добавляет Введение в Содержание
+\end{center}
 
+Перейдём к температуре:
+\begin{equation*}
+\frac{\partial T}{\partial x} = \frac{\partial T}{\partial v}\frac{\partial v}{\partial x} = \frac{c\beta T}{C_{p}}\frac{\partial v}{\partial x} = \frac{c\beta T}{C_{p}}\left(-v_{0}k\sin(kx-\omega t) \right),
+\end{equation*}
+усредняя и интегрируя по $ V $ получим:
+\begin{equation*}
+\int \left( \nabla T\right)^{2}dV = \frac{c^{2}\beta^{2}T^{2}}{C_{p}^{2}}v_{o}^{2}k^{2}\frac{1}{2}V_{0}.
+\end{equation*}
+Множитель связан $ T' = \frac{c\beta Tv}{C_{p}} \longrightarrow \frac{\partial T}{\partial v} =  \frac{c\beta T}{C_{p}} $
 
+Базовым является, что диссипация механической энергии представляет собой $ \dot{E}_{mek} = -TS $.
+Энтропия определяет всю совокупность диссипативных событий.
+\begin{equation*}
+\dot{E}_{mek} = -T\left\lbrace\frac{\kappa}{T^{2}} \frac{c^{2}\beta^{2}T^{2}}{2C_{p}^{2}}v_{0}^{2}k^{2}V_{0}+\frac{1}{T}\left( \frac{4}{3}\eta + \xi\right)\frac{v_{0}^{2}k^{2}V_{0}}{2} \right\rbrace = 
+\end{equation*}
+\begin{equation}\label{68}
+ =-\frac{v_{0}^{2}k^{2}V_{0}}{2}\left[\left( \frac{4}{3}\eta + \xi\right) + \frac{\kappa c^{2}\beta^{2}T}{C_{p}^{2}} \right].
+\end{equation}
 
+Для воздуха $ \eta \sim 10^{-5}  $, а $ \frac{\kappa c^{2}\beta^{2}T}{C_{p}^{2}} \sim 10^{-5}$.
+Вспомнив уравнение для энергии:
+\begin{equation*}
+\int \overline{E}dV = \int \rho_{0}\overline{v^{2}}dV.
+\end{equation*}
+\begin{equation*}
+\overline{E} = \frac{\rho_{0}v_{0}^{2}}{2}V_{0},
+\end{equation*}
+полная энергия звуковой волны с амплитудой $ v_{0} $, разделив на $ \rho $ получим:
+\begin{equation*}
+\frac{\overline{E}}{\rho} = \frac{v_{0}^{2}V_{0}}{2},
+\end{equation*}
+его подставляем в (\ref{68}) заменяя $ v_{0}^{2} $ и получаем:
+\begin{equation*}
+\dot{E}_{mek} = -\left[\left( \frac{4}{3}\eta + \xi\right) + \frac{\kappa c^{2}\beta^{2}T}{C_{p}^{2}} \right] \frac{k^{2}}{\rho_{0}}\overline{E} = -2\gamma c \overline{E}.
+\end{equation*}
+То есть механическая энергия может только убывать с течением времени. По закону $ e^{-2\gamma x} $, амплитуда убывает по закону $ e^{-\gamma x} = e^{-\gamma ct} $. $ t = \frac{x}{c}, $ где $ x $ - координата. Это получается при интегрировании $ \dot{E}_{mek} = -2\gamma c \overline{E} $.
 
+$ \gamma $ - показывает как убывает амплитуда волны при удалении, коэффициент затухания (P.S $ k = \frac{\omega}{c}  $).
+\begin{equation*}
+\gamma = \frac{k^{2}}{2c\rho_{0}} \left[\left( \frac{4}{3}\eta + \xi\right) + \frac{\kappa c^{2}\beta^{2}T}{C_{p}^{2}} \right] = \frac{\omega^{2}}{2c^{3}\rho_{0}}\left[\left( \frac{4}{3}\eta + \xi\right) + \frac{\kappa c^{2}\beta^{2}T}{C_{p}^{2}} \right],
+\end{equation*}
+коэффициент затухания акустической волны, ну и $ k $ - как все догадались волновое число.
 
+Для голоса $ \gamma \sim 10^{-7} $, то есть значение мало. Оказывается, что звук далеко не слышен не из-за вязкости, а от чего-то другого. 
 
+\begin{equation*}
+\gamma =  \frac{\omega^{2}}{2c^{3}\rho_{0}}\left[\left( \frac{4}{3}\eta + \xi\right) + \frac{\kappa c^{2}\beta^{2}T}{C_{p}^{2}} \right],
+\end{equation*}
+\textit{ формула Киргофа}, а слагаемые в квадратных скобках блок материальных параметров.
 
+Запишем уравнения для затухающей волны. Ну или как изменится уравнение для бегущей звуковой волны с учётом диссипации энергии?
+Раньше было:
 
+\begin{equation*}
+\partial_{tt}\varphi = c^{2}\Delta\varphi, \;\; \text{Было} \;\; k = \frac{\omega}{c}.
+\end{equation*}
+Теперь добавим слагаемые с мнимой единицей:
+\begin{equation*}
+k = \frac{\omega}{c} + ia\omega^{2}, \;\; \text{где} \;\; a\omega^{2} = \gamma.
+\end{equation*}
+В отсутствии поглощения было (в терминах давления) $ a = \frac{1}{2c^{2}\rho_{0}}\left( \frac{4}{3}\eta + \xi\right) + \frac{\kappa c^{2} p^{2}}{C_{p}} $, $ p' = p(x - ct) $.
 
+Факторизуем выражение:
+\begin{equation*}
+\frac{\partial^{2} p'}{\partial t^{2}} = c^{2}\frac{\partial^{2} p'}{\partial x^{2}},
+\end{equation*}
 
+Процесс факторизации заключается в следующем:
+\begin{equation*}
+\frac{\partial^{2} p'}{\partial t^{2}} = c^{2}\frac{\partial^{2} p'}{\partial x^{2}} \;\; \text{записываем в виде}
+\end{equation*}
+\begin{equation*}
+\left( \frac{\partial}{\partial t} - c\frac{\partial}{\partial x}  \right)\left( \frac{\partial}{\partial t} + c\frac{\partial}{\partial x}  \right)p' = 0
+\end{equation*}
+Раскрывая получаем исходное выражение. Но тут мы можем ограничится одной скобкой, а под скобкой тут ещё понимается одна сторона, левая или правая.
+В итоге для одной стороны имеем:
 
+\begin{equation*}
+\frac{\partial p'}{\partial t} = c\frac{\partial p'}{\partial x}. 
+\end{equation*}
+Теперь учётом диссипации $ k $ имеем другой вид решения $ e^{i(kx-\omega t)} $. Как измениться (\ref{69}) с учётом диссипации.
+\begin{equation}\label{69}
+\frac{\partial p'}{\partial x} = - \frac{1}{c}\frac{\partial p'}{\partial t}.
+\end{equation}
 
+\begin{equation*}
+\frac{\partial p'}{\partial x} = - \frac{1}{c}\frac{\partial p'}{\partial t} + a\frac{\partial^{2} p'}{\partial t^{2}}.
+\end{equation*}
+\begin{equation*}
+ik = \frac{1}{c}i\omega + a(i\omega)^{2} \;\;\longrightarrow\;\; k = \frac{\omega}{c} + ia\omega^{2}.
+\end{equation*}
+
+Сведём наше уравнение к мат.физике, чтоб получить одно из \RomanNumeralCaps{3}-х решаемых там уравнений.
+Введём новую переменную $ \tau = t - \frac{x}{c} $.
+\begin{equation*}
+\frac{\partial p'}{\partial x} = \frac{\partial p'}{\partial x'}\frac{\partial x'}{\partial x} + \frac{\partial p'}{\partial \tau}\frac{\partial \tau}{\partial x} = \frac{\partial p'}{\partial x'} -\frac{1}{c} \frac{\partial p'}{\partial \tau},
+\end{equation*}
+где $ x' $ - новая пространственная переменная.
+\begin{equation*}
+\frac{\partial p'}{\partial t} = \frac{\partial p'}{\partial \tau}\frac{\partial \tau}{\partial t} + \frac{\partial p'}{\partial x}\frac{\partial x}{\partial t} = \frac{\partial p'}{\partial \tau} -\frac{1}{c} \frac{\partial p'}{\partial x}.
+\end{equation*}
+В итоге:
+\begin{equation*}
+\frac{\partial^{2} p'}{\partial t^{2}} = \frac{\partial^{2} p'}{\partial \tau^{2}}.
+\end{equation*}
+Подставляя, получаем: 
+\begin{equation*}
+\frac{\partial^{2} p'}{\partial x'} = a\frac{\partial^{2} p'}{\partial \tau^{2}}.
+\end{equation*}
+Мы перешли в систему отсчёта связанную с волной. Ну и как бы получили одномерное уравнение теплопроводности с инвертированными координатами.
+
+Оказывается, что затухающая волна подобна температурной волне и описывается уравнениями теплопроводности.
+И звук который мы слышим плохо затухает. И это связанно не с диссипацией, а с рассеиванием.
+Вот это поворот вот.
+
+\newpage
+\begin{center}
+	\subsection*{Shock wave - ударная волна} % Звездочка убирает нумерацию главы
+	\addcontentsline{toc}{subsection}{Shock wave - ударная волна} % Добавляет Введение в Содержание
+	Новая веха в истории.
+\end{center}
+
+\underline{Распространения возмущения в потоке сжимаемого газа - парадокс. }
+
+Если газ подвергается возмущению, то влияние этого возмущения относительно газа, распространяется со скоростью звука, это возмущение представляет собой сферические волны. 
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=10cm]{14.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{Функция Неймана}
+	\label{fig::15}
+\end{figure}  
+
+Пусть будет лабораторная система отсчёта относительно которой и движется среда с скоростью $ v $.
+Итак, что мы будем наблюдать: 
+
+Случай $ v<c $, вариант дозвуковых скоростей.
+В дозвуковом потоке акустическая волна распространяется как вверх по потоку, так и вниз.
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=6.5cm]{15.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{  $ v<c $ }
+	\label{fig::16}
+\end{figure}
+
+Случай $ v>c $, вариант сверхзвуковых скоростей.
+\begin{figure}[h!] 	% Окружение для вставки иллюстрации
+	\centering 		% Выравнивание по центру
+	\includegraphics[width=10cm]{16.eps} %ширина рисунка составляет половину от ширины текста, picture1 - название файла с изображением, помещенного в папку Images
+	\caption{  $ v>c $ }
+	\label{fig::17}
+\end{figure}
+В сверх звуковом потоке исходящие из некоторой точки возмущения распространяются только вниз по потоку + внутри конуса с раствором:
+\begin{equation*}
+\sin \alpha = \frac{c}{v} \;\;\longrightarrow \alpha = \arcsin \frac{c}{v},
+\end{equation*}
+где $ \alpha $ - угол возмущения.
+
+\begin{equation*}
+\text{Число Маха}\:\: M = \frac{v}{c}
+\end{equation*}
+
+Поверхность ограничивающая область куда могут попасть возмущения называется характеристической.
+В общем случае характеристическая поверхность не является канонической, так как скорость звука различна в разных областях газа.
+
+Если газ обтекает препятствие с дозвуковой скоростью, то возмущение изменяется за счёт препятствия форму течения как вверх по потоку, так и вниз. Влияние этого возмущения возникает асимптотически при удалении от тела.
+
+А сверхзвуковой поток натекает на препятствие слепо. Влияние препятствующего тела распространяется на область только вниз по течению. Во всей остальной области газ движется так, как если бы никакого препятствия не было. Под возмущением газа мы понимаем звуковую волну. $ Re>>1 $ - для нашего случая.        
 
 
 
